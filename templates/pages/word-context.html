@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Word Context</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head"><div><p class="eyebrow" data-i18n="wc_eyebrow">WORD IN CONTEXT</p><h1 data-i18n="wc_title">Word Context</h1></div><a class="secondary-button" href="/words"><span data-i18n="wc_backWordLibrary">Word library</span></a></header>
+<section class="panel">
+<div class="panel-heading">
+<div><p class="eyebrow" data-i18n="wc_word">WORD</p><h2 data-i18n="wc_selectWord" id="contextWord">Select a word</h2></div>
+</div>
+<p id="contextMeaning"></p>
+</section>
+<section class="panel link-section">
+<div class="panel-heading">
+<div><p class="eyebrow" data-i18n="wc_sentenceConnections">SENTENCE CONNECTIONS</p><h3 data-i18n="wl_sentencesUsingWord">Sentences using this word</h3></div>
+<span class="link-count" id="linkedSentenceCount">0 sentences</span>
+</div>
+<div class="linked-sentence-list" id="linkedSentences"></div>
+</section>
+
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/word-sentence-linking.js"></script>
+<script src="/static/js/word-context.js"></script>
+{% endblock %}

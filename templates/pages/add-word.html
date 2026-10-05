@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Add word</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head"><div><p class="eyebrow" data-i18n="aw_eyebrow">BUILD YOUR LIBRARY</p><h1 data-i18n="nav_addWord">Add word</h1></div><div class="page-head-actions"><a class="secondary-button" data-i18n="nav_words" href="/words">Word library</a></div></header>
+<section class="panel">
+<form id="addWordForm">
+<div class="form-grid">
+<div class="form-group"><label data-i18n="wl_wordLabel" for="word">Word *</label><input class="field" data-i18n-placeholder="aw_wordPlaceholder" id="word" maxlength="100" name="word" placeholder="e.g. achieve" required=""/></div>
+<div class="form-group"><label data-i18n="wl_definitionLabel" for="definition">Arabic Meaning *</label><input class="field" data-i18n-placeholder="aw_definitionPlaceholder" id="definition" name="definition" placeholder="e.g. يحقق / ينجز" required=""/></div>
+<div class="form-group"><label data-i18n="wl_partOfSpeech" for="partOfSpeech">Part of Speech</label><input class="field" data-i18n-placeholder="aw_posPlaceholder" id="partOfSpeech" name="partOfSpeech" placeholder="verb, noun, adjective..."/></div>
+<div class="form-group"><label data-i18n="wl_category" for="category">Category</label><select class="select" id="category" name="category">
+<option data-i18n="cat_general" value="General">General</option>
+<option data-i18n="cat_academic" value="Academic">Academic</option>
+<option data-i18n="cat_business" value="Business">Business</option>
+<option data-i18n="cat_technology" value="Technology">Technology</option>
+<option data-i18n="cat_travel" value="Travel">Travel</option>
+<option data-i18n="cat_dailyLife" value="Daily Life">Daily Life</option>
+<option data-i18n="cat_health" value="Health">Health</option>
+<option data-i18n="cat_science" value="Science">Science</option>
+<option data-i18n="cat_work" value="Work">Work</option>
+<option data-i18n="cat_other" value="Other">Other</option>
+</select></div>
+<div class="form-group"><label data-i18n="wl_difficulty" for="difficulty">Difficulty</label><select class="select" id="difficulty" name="difficulty"><option data-i18n="diff_easy" value="easy">Easy</option><option data-i18n="diff_medium" selected="" value="medium">Medium</option><option data-i18n="diff_hard" value="hard">Hard</option></select></div>
+<div class="form-group full"><label data-i18n="wl_exampleSentence" for="exampleSentence">Example Sentence</label><textarea class="field" data-i18n-placeholder="aw_examplePlaceholder" id="exampleSentence" name="exampleSentence" placeholder="Write a natural English sentence using this word..."></textarea></div>
+</div>
+<p class="error-message form-message" id="formError"></p>
+<p class="success-message form-message" id="successMessage"></p>
+<div class="form-actions"><button class="secondary-button" data-i18n="common_clear" type="reset">Clear</button><button class="primary-button" data-i18n="aw_saveWord" type="submit">Save Word</button></div>
+</form>
+</section>
+
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/words.js"></script>
+{% endblock %}

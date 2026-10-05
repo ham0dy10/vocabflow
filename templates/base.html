@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ bootstrap_script|safe }}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VocabFlow personal English vocabulary learning app">
+  <script nonce="{{ csp_nonce }}">
+    (function(){
+      var root=document.documentElement;
+      var serverSettings=window.__VOCABFLOW_BOOTSTRAP__?.settings || {};
+      var settings=serverSettings;
+      try {
+        var userId=window.__VOCABFLOW_USER__?.id ?? 'guest';
+        var raw=localStorage.getItem('vocabflow:u' + userId + ':vocabflow_settings');
+        if(raw) settings=Object.assign({}, serverSettings, JSON.parse(raw));
+      } catch(e) {}
+
+      var lang=settings.language==='ar'?'ar':'en';
+      var theme=settings.theme==='dark'?'dark':'light';
+      root.dataset.theme=theme;
+      root.dataset.lang=lang;
+      root.lang=lang;
+      root.dir='ltr';
+      if(lang==='ar') root.dataset.i18nPending='true';
+    })();
+  </script>
+  {% block title %}<title>VocabFlow</title>{% endblock %}
+  {% block page_styles %}{% endblock %}
+  <link rel="stylesheet" href="/static/css/vocabflow.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="/" aria-label="VocabFlow home">
+        <span class="site-brand-mark" aria-hidden="true">V</span>
+        <span class="site-brand-name">VocabFlow</span>
+      </a>
+
+      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Open navigation" aria-controls="siteNav" aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <a class="nav-link" href="/" data-nav-path="/" data-i18n="nav_dashboard">Home</a>
+        <a class="nav-link" href="/review" data-nav-path="/review" data-i18n="nav_review">Review</a>
+        <a class="nav-link" href="/practice" data-nav-path="/practice" data-i18n="nav_practice">Practice</a>
+        <a class="nav-link" href="/quiz" data-nav-path="/quiz" data-i18n="nav_quiz">Quiz</a>
+        <div class="nav-menu" id="libraryMenuWrap">
+          <button class="nav-menu-trigger" id="libraryMenuTrigger" type="button" aria-expanded="false" aria-haspopup="true">
+            <span data-i18n="nav_library">Library</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg>
+          </button>
+          <div class="nav-menu-panel" id="libraryMenu" hidden>
+            <a href="/words" data-nav-path="/words" data-i18n="nav_words">Words</a>
+            <a href="/sentences" data-nav-path="/sentences" data-i18n="nav_sentences">Sentences</a>
+            <a href="/add-word" data-nav-path="/add-word" data-i18n="nav_addWord">Add word</a>
+            <a href="/add-sentence" data-nav-path="/add-sentence" data-i18n="nav_addSentence">Add sentence</a>
+            <a href="/data" data-nav-path="/data" data-i18n="nav_data">Import &amp; export</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/progress" data-nav-path="/progress" data-i18n="nav_progress">Progress</a>
+      </nav>
+
+      <div class="site-controls">
+        <button class="top-control" id="langToggle" type="button" aria-label="Change language"><span data-i18n="langToggle">العربية</span></button>
+        <button class="top-control icon-only" id="themeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+          <svg class="theme-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M5.6 5.6 7 7M17 17l1.4 1.4M3 12h2M19 12h2M5.6 18.4 7 17M17 7l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+          <span class="sr-only theme-label" data-i18n="darkMode">Dark mode</span>
+        </button>
+        <div class="account-menu-wrap">
+          <button class="account-trigger" id="accountTrigger" type="button" aria-expanded="false" aria-haspopup="true">
+            <span class="account-initial" id="accountTriggerInitial" aria-hidden="true">V</span>
+            <span class="account-trigger-name" id="accountTriggerName">Account</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg>
+          </button>
+          <div class="account-menu" id="accountMenu" hidden>
+            <div class="account-menu-user">
+              <strong id="accountMenuName">VocabFlow</strong>
+              <span id="accountMenuEmail">Account</span>
+            </div>
+            <a href="/account" data-i18n="account_title">Account</a>
+            <button type="button" id="vocabflowLogout" data-i18n="auth_logout">Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" hidden></div>
+  </header>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="/static/js/page-lifecycle.js"></script>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/auth.js"></script>
+  <script src="/static/js/storage.js"></script>
+  <script src="/static/js/i18n.js"></script>
+  <script src="/static/js/ui.js"></script>
+  <script src="/static/js/vf-selects.js"></script>
+  <script src="/static/js/navigation.js"></script>
+  <script src="/static/js/vf-shell.js"></script>
+  {% block page_scripts %}{% endblock %}
+</body>
+</html>

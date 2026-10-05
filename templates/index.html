@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Home</title>{% endblock %}
+{% block content %}
+<section class="home-intro" aria-labelledby="homeTitle">
+  <div>
+    <p class="page-kicker" data-i18n="home_today">Today</p>
+    <h1 id="homeTitle" data-i18n="home_title">Review what is due today.</h1>
+    <p class="home-subtitle" data-i18n="home_subtitle">Start with the cards that are ready. Then choose another activity when you are done.</p>
+  </div>
+  <div class="home-focus">
+    <strong id="dueToday">0</strong>
+    <span data-i18n="home_dueCards">cards due</span>
+    <a class="primary-button" href="/review" data-i18n="home_reviewNow">Review now</a>
+  </div>
+</section>
+
+<section class="home-line" aria-label="Library summary">
+  <span><strong id="totalWords">0</strong> <span data-i18n="home_words">words</span></span>
+  <span><strong id="masteredWords">0</strong> <span data-i18n="home_mastered">mastered</span></span>
+  <span><strong id="learningWords">0</strong> <span data-i18n="home_learning">learning</span></span>
+</section>
+
+<section class="home-section" aria-labelledby="learnTitle">
+  <div class="section-heading-row">
+    <div>
+      <p class="page-kicker" data-i18n="home_learnKicker">Learn</p>
+      <h2 id="learnTitle" data-i18n="home_learnTitle">Choose an activity</h2>
+    </div>
+  </div>
+  <div class="home-actions">
+    <a href="/review" class="home-action">
+      <span class="activity-index" aria-hidden="true">01</span>
+      <span><strong data-i18n="home_reviewTitle">Word review</strong><small data-i18n="home_reviewDesc">Review vocabulary using spaced repetition.</small></span>
+      <span class="action-meta" id="reviewPill">0 cards</span>
+      <svg class="activity-chevron" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+    </a>
+    <a href="/practice" class="home-action">
+      <span class="activity-index" aria-hidden="true">02</span>
+      <span><strong data-i18n="home_practiceTitle">Practice</strong><small data-i18n="home_practiceDesc">Recall words, sentences, and short answers.</small></span>
+      <span class="action-meta" aria-hidden="true"></span>
+      <svg class="activity-chevron" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+    </a>
+    <a href="/quiz" class="home-action">
+      <span class="activity-index" aria-hidden="true">03</span>
+      <span><strong data-i18n="home_quizTitle">Quiz</strong><small data-i18n="home_quizDesc">Check your recall with multiple-choice questions.</small></span>
+      <span class="action-meta" aria-hidden="true"></span>
+      <svg class="activity-chevron" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+    </a>
+    <a href="/sentences" class="home-action">
+      <span class="activity-index" aria-hidden="true">04</span>
+      <span><strong data-i18n="home_sentencesTitle">Sentences</strong><small data-i18n="home_sentencesDesc">Read, review, and practice your saved sentences.</small></span>
+      <span class="action-meta" aria-hidden="true"></span>
+      <svg class="activity-chevron" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="home-secondary">
+  <div class="home-secondary-copy">
+    <p class="page-kicker" data-i18n="home_libraryKicker">Library</p>
+    <h2 data-i18n="home_libraryTitle">Keep your vocabulary organized.</h2>
+    <p data-i18n="home_libraryText">Add words and sentences as you meet them. Use the library when you want to search, edit, or import data.</p>
+  </div>
+  <div class="home-secondary-actions">
+    <a class="secondary-button" href="/words" data-i18n="nav_words">Word library</a>
+    <a class="secondary-button" href="/add-word" data-i18n="nav_addWord">Add word</a>
+    <a class="secondary-button" href="/progress" data-i18n="nav_progress">Progress</a>
+  </div>
+</section>
+
+<footer class="app-footer" data-i18n="dash_footer">VocabFlow. Personal English vocabulary learning.</footer>
+{% endblock %}
+{% block page_scripts %}<script src="/static/js/app.js"></script>{% endblock %}

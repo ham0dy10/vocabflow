@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Review</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head">
+<div><p class="eyebrow" data-i18n="rv_eyebrow">SPACED REPETITION</p><h1 data-i18n="nav_review">Review</h1></div>
+
+</header>
+<div class="review-shell">
+<div class="review-top"><span class="review-counter" id="reviewCount">0 / 0</span><span class="review-counter" data-i18n="rv_todayLabel">Today’s review</span></div>
+<div class="session-progress"><div id="sessionProgress"></div></div>
+<section class="panel flashcard" id="flashcardView">
+<div class="flashcard-pos" data-i18n="rv_vocabLabel" id="cardPos">Vocabulary</div>
+<h2 class="flashcard-word" id="cardWord">Word</h2>
+<p class="flashcard-hint" data-i18n="rv_hint" id="cardHint">Think about the meaning before revealing the answer.</p>
+<button class="primary-button show-answer" data-i18n="common_showAnswer" id="showAnswer">Show Answer</button>
+<div class="answer-area hidden" id="answerArea">
+<div class="answer-definition" id="answerDefinition"></div>
+<div class="answer-example" id="answerExample"></div>
+</div>
+<div class="rating-grid" id="ratingGrid">
+<button class="rating-button again" data-rating="again"><span data-i18n="rate_again">Again</span><small data-i18n="rv_again_sub">1 · Short interval</small></button>
+<button class="rating-button hard" data-rating="hard"><span data-i18n="rate_hard">Hard</span><small data-i18n="rate_hard_sub">2 · Difficult</small></button>
+<button class="rating-button good" data-rating="good"><span data-i18n="rate_good">Good</span><small data-i18n="rate_good_sub">3 · Normal</small></button>
+<button class="rating-button easy" data-rating="easy"><span data-i18n="rate_easy">Easy</span><small data-i18n="rate_easy_sub">4 · Long interval</small></button>
+</div>
+</section>
+<section class="panel review-empty" id="reviewEmpty">
+<div class="summary-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></div><h2 data-i18n="common_allCaughtUp">You’re all caught up</h2>
+<p data-i18n="rv_emptyText">There are no cards due right now. Add new words or come back when your next reviews are scheduled.</p>
+<a class="primary-button" data-i18n="common_addWordBtn" href="/add-word">Add word</a>
+</section>
+<section class="panel session-summary" id="sessionSummary">
+<div class="summary-icon"></div>
+<p class="eyebrow" data-i18n="rv_sessionComplete">SESSION COMPLETE</p>
+<h2 data-i18n="rv_greatWork">Great work!</h2>
+<div class="summary-grid">
+<div class="summary-stat"><strong id="summaryReviewed">0</strong><span data-i18n="rv_wordsReviewed">Words reviewed</span></div>
+<div class="summary-stat"><strong id="summaryCorrect">0</strong><span data-i18n="rv_correctAnswers">Correct answers</span></div>
+<div class="summary-stat"><strong id="summaryHard">0</strong><span data-i18n="rv_difficultWords">Difficult words</span></div>
+<div class="summary-stat"><strong id="summaryAgain">0</strong><span data-i18n="rv_againAnswers">Again answers</span></div>
+<div class="summary-stat"><strong id="summaryAccuracy">0%</strong><span data-i18n="common_accuracy">Accuracy</span></div>
+<div class="summary-stat"><strong id="summaryDuration">0s</strong><span data-i18n="rv_sessionDuration">Session duration</span></div>
+</div>
+<button class="primary-button" data-i18n="rv_startAnother" id="restartReview">Start another review</button>
+<a class="secondary-button" data-i18n="common_dashboard" href="/">Home</a>
+</section>
+<p class="shortcut-hint" data-i18n="rv_shortcuts">Keyboard: Space = Show Answer · 1 = Again · 2 = Hard · 3 = Good · 4 = Easy</p>
+</div>
+
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/spaced-repetition.js"></script>
+<script src="/static/js/review.js"></script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Progress</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head"><div><p class="eyebrow" data-i18n="pg_eyebrow">YOUR LEARNING DATA</p><h1 data-i18n="nav_progress">Progress</h1></div></header>
+<section class="metric-grid">
+<article class="metric-card"><span data-i18n="pg_totalVocab">Total Vocabulary</span><strong id="pTotal">0</strong><small data-i18n="pg_wordsInLibrary">words in your library</small></article>
+<article class="metric-card"><span data-i18n="pg_reviews">Reviews</span><strong id="pReviews">0</strong><small data-i18n="pg_completedReviews">completed reviews</small></article>
+<article class="metric-card"><span data-i18n="common_accuracy">Accuracy</span><strong id="pAccuracy">0%</strong><small data-i18n="pg_nonAgainAnswers">non-Again answers</small></article>
+<article class="metric-card"><span data-i18n="pg_currentStreak">Current Streak</span><strong id="pCurrentStreak">0</strong><small data-i18n="pg_consecutiveDays">consecutive days</small></article>
+</section>
+<section class="progress-page-grid">
+<article class="panel">
+<div class="panel-heading"><div><p class="eyebrow" data-i18n="pg_vocabBreakdown">VOCABULARY BREAKDOWN</p><h3 data-i18n="pg_learningStatus">Learning Status</h3></div></div>
+<div class="status-list">
+<div class="status-line"><span data-i18n="status_new">New</span><div class="status-track"><div class="status-fill" id="fill-new"></div></div><strong id="count-new">0</strong></div>
+<div class="status-line"><span data-i18n="status_learning">Learning</span><div class="status-track"><div class="status-fill" id="fill-learning"></div></div><strong id="count-learning">0</strong></div>
+<div class="status-line"><span data-i18n="status_reviewing">Reviewing</span><div class="status-track"><div class="status-fill" id="fill-reviewing"></div></div><strong id="count-reviewing">0</strong></div>
+<div class="status-line"><span data-i18n="status_mastered">Mastered</span><div class="status-track"><div class="status-fill" id="fill-mastered"></div></div><strong id="count-mastered">0</strong></div>
+</div>
+</article>
+<article class="panel">
+<div class="panel-heading"><div><p class="eyebrow" data-i18n="pg_streak">STREAK</p><h3 data-i18n="pg_consistency">Consistency</h3></div></div>
+<div class="streak-box">
+<div class="streak-number" id="pStreakBig">0</div><span class="streak-label" data-i18n="pg_currentDayStreak">current day streak</span>
+</div>
+<div class="activity-list">
+<div class="activity-row"><span data-i18n="pg_longestStreak">Longest streak</span><strong id="pLongestStreak">0 days</strong></div>
+<div class="activity-row"><span data-i18n="pg_masteredWords">Mastered words</span><strong id="pMastered">0</strong></div>
+</div>
+</article>
+</section>
+<section class="panel chart-card">
+<div class="panel-heading"><div><p class="eyebrow" data-i18n="pg_last7days">LAST 7 DAYS</p><h3 data-i18n="pg_reviewActivity">Review Activity</h3></div></div>
+<div class="chart" id="weeklyChart"></div>
+</section>
+<section class="panel">
+<div class="panel-heading"><div><p class="eyebrow" data-i18n="pg_dailyDetail">DAILY DETAIL</p><h3 data-i18n="pg_recentActivity">Recent Activity</h3></div></div>
+<div class="activity-list" id="activityList"></div>
+</section>
+<section class="panel" id="unifiedProgress"></section><section class="panel s8-note" data-i18n="pg_masteryNote">Mastery combines word and sentence statuses. Accuracy is based on recorded review and quiz history.</section>
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/progress.js"></script>
+<script src="/static/js/sentence-progress.js"></script>
+{% endblock %}

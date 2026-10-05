@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Import & export</title>{% endblock %}
+{% block content %}
+<header class="page-head">
+  <div>
+    <p class="eyebrow" data-i18n="dt_eyebrow">DATA MANAGEMENT</p>
+    <h1 data-i18n="nav_data">Import &amp; Export</h1>
+  </div>
+</header>
+
+<section class="data-intro">
+  <p data-i18n="dt_pageIntro">Back up your vocabulary and study history, or bring an existing library into VocabFlow.</p>
+</section>
+
+<section class="data-grid">
+  <article class="data-card">
+    <p class="eyebrow" data-i18n="dt_backup">BACKUP</p>
+    <h2 data-i18n="dt_exportData">Export your data</h2>
+    <p data-i18n="dt_exportDataText">Save a full copy of your vocabulary, sentences, reviews, study history, and settings.</p>
+    <div class="io-actions">
+      <button class="primary-button" data-i18n="dt_exportJson" id="exportJSON">Export full JSON backup</button>
+      <button class="secondary-button" data-i18n="dt_exportCsv" id="exportCSV">Export words as CSV</button>
+    </div>
+    <div class="data-note"><strong data-i18n="dt_jsonLabel">JSON:</strong> <span data-i18n="dt_jsonDesc">Words, sentences, reviews, study history and settings.</span><br><strong data-i18n="dt_csvLabel">CSV:</strong> <span data-i18n="dt_csvDesc">Vocabulary fields for spreadsheet editing.</span></div>
+  </article>
+
+  <article class="data-card">
+    <p class="eyebrow" data-i18n="dt_restore">RESTORE</p>
+    <h2 data-i18n="dt_importData">Import data</h2>
+    <p data-i18n="dt_importDataText">Choose how imported words should interact with your existing library.</p>
+    <div class="import-mode">
+      <span class="import-mode-title" data-i18n="dt_importMode">Import mode</span>
+      <div class="mode-row">
+        <div class="mode-option"><input checked id="modeMerge" name="importMode" type="radio" value="merge"><label for="modeMerge"><span data-i18n="dt_merge">Merge</span><small data-i18n="dt_keepExisting">Keep existing</small></label></div>
+        <div class="mode-option"><input id="modeUpdate" name="importMode" type="radio" value="update"><label for="modeUpdate"><span data-i18n="dt_update">Update</span><small data-i18n="dt_replaceDuplicates">Replace duplicates</small></label></div>
+        <div class="mode-option"><input id="modeReplace" name="importMode" type="radio" value="replace"><label for="modeReplace"><span data-i18n="dt_replace">Replace</span><small data-i18n="dt_overwriteLibrary">Overwrite library</small></label></div>
+      </div>
+    </div>
+    <label class="file-dropzone" for="fileInput">
+      <strong data-i18n="dt_chooseFile">Choose CSV or JSON</strong>
+      <span id="fileName">No file selected</span>
+      <input accept=".csv,.json,application/json,text/csv" class="file-input" id="fileInput" type="file">
+    </label>
+    <div class="io-actions data-import-actions"><button class="primary-button" id="importWordsButton" type="button" data-i18n="dt_importData">Import data</button></div>
+    <div class="data-note"><strong data-i18n="dt_requiredCols">Required CSV columns:</strong> <code>word, definition</code> <span data-i18n="dt_definitionNote">(definition = Arabic meaning)</span></div>
+  </article>
+</section>
+
+<section class="panel management-panel">
+  <div class="management-row">
+    <div>
+      <p class="eyebrow" data-i18n="dt_safety">SAFETY</p>
+      <h2 data-i18n="dt_libraryManagement">Library management</h2>
+      <p data-i18n="dt_localStorageNote">Your data is stored in the VocabFlow database when the app is running through the backend. Export a JSON backup before making large changes.</p>
+    </div>
+    <button class="secondary-button" data-i18n="dt_clearLibrary" id="clearData">Clear vocabulary library</button>
+  </div>
+  <div class="io-message" id="ioMessage" aria-live="polite"></div>
+</section>
+
+<section class="panel sentence-data-panel" id="sentenceImportExport">
+  <div class="panel-heading">
+    <div><p class="eyebrow" data-i18n="dt_sentenceData">SENTENCE DATA</p><h2 data-i18n="sl_importExport">Sentence import &amp; export</h2></div>
+    <span class="sentence-data-count" id="sentenceDataCount">0 sentences stored</span>
+  </div>
+  <div class="sentence-data-grid">
+    <div class="sentence-data-block">
+      <h3 data-i18n="dt_importSentences">Import sentences</h3>
+      <p data-i18n="dt_importSentencesText">Import JSON or CSV. Existing sentences are matched and updated instead of duplicated.</p>
+      <label class="file-dropzone" for="sentenceImportFile"><strong data-i18n="dt_chooseSentenceFile">Choose a sentence file</strong><span id="sentenceFileName">No file selected</span><input accept=".json,.csv,application/json,text/csv" class="sentence-file-input" id="sentenceImportFile" type="file"></label>
+      <div class="sentence-data-actions"><button class="primary-button" data-i18n="dt_importSentences" id="importSentencesButton" type="button">Import sentences</button></div>
+      <div class="sentence-data-message" id="sentenceImportMessage" aria-live="polite"></div>
+    </div>
+    <div class="sentence-data-block">
+      <h3 data-i18n="dt_exportSentences">Export sentences</h3>
+      <p data-i18n="dt_exportSentencesText">Export your complete sentence library without changing vocabulary data.</p>
+      <div class="sentence-data-actions"><button class="secondary-button" data-i18n="dt_exportJsonBtn" id="exportSentencesJSON" type="button">Export JSON</button><button class="secondary-button" data-i18n="dt_exportCsvBtn" id="exportSentencesCSV" type="button">Export CSV</button></div>
+      <div class="data-note" data-i18n="dt_includesFields">Includes meaning, category, difficulty, status and review fields.</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/import-export.js"></script>
+<script src="/static/js/sentence-import-export.js"></script>
+{% endblock %}

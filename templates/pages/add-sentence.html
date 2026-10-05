@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Add sentence</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+<header class="page-head"><div><p class="eyebrow" data-i18n="as_eyebrow">BUILD YOUR SENTENCE BANK</p><h1 data-i18n="nav_addSentence">Add sentence</h1></div><div class="page-head-actions"><a class="secondary-button" data-i18n="as_sentenceLibrary" href="/sentences">Sentence library</a></div></header><section class="panel"><form id="addSentenceForm"><div class="sentence-form-grid"><div class="sentence-form-group full"><label data-i18n="sl_englishSentenceLabel" for="sentence">English Sentence *</label><textarea class="field" data-i18n-placeholder="as_sentencePlaceholder" id="sentence" maxlength="500" placeholder="e.g. I want to improve my English." required=""></textarea></div><div class="sentence-form-group full"><label data-i18n="sl_arabicMeaningLabel" for="arabicMeaning">Arabic Meaning *</label><textarea class="field" id="arabicMeaning" placeholder="اكتب معنى الجملة بالعربي" required=""></textarea></div><div class="sentence-form-group"><label data-i18n="wl_category" for="category">Category</label><select class="select" id="category"><option data-i18n="cat_general" value="General">General</option><option data-i18n="cat_academic" value="Academic">Academic</option><option data-i18n="cat_business" value="Business">Business</option><option data-i18n="cat_technology" value="Technology">Technology</option><option data-i18n="cat_travel" value="Travel">Travel</option><option data-i18n="cat_dailyLife" value="Daily Life">Daily Life</option><option data-i18n="cat_health" value="Health">Health</option><option data-i18n="cat_science" value="Science">Science</option><option data-i18n="cat_work" value="Work">Work</option><option data-i18n="cat_other" value="Other">Other</option></select></div><div class="sentence-form-group"><label data-i18n="wl_difficulty" for="difficulty">Difficulty</label><select class="select" id="difficulty"><option data-i18n="diff_easy" value="easy">Easy</option><option data-i18n="diff_medium" selected="" value="medium">Medium</option><option data-i18n="diff_hard" value="hard">Hard</option></select></div></div>
+<div class="link-section" id="sentenceLinkPreview" hidden>
+<div class="panel">
+<div class="panel-heading">
+<div>
+<p class="eyebrow" data-i18n="as_autoLinking">AUTO-LINKING</p>
+<h3 data-i18n="as_vocabDetected">Vocabulary detected in this sentence</h3>
+</div>
+<span class="link-count" id="linkedWordCount">0 linked words</span>
+</div>
+<div class="linked-word-grid" id="linkedWords">
+<div class="link-empty"><p data-i18n="as_saveFirst">Save the sentence first to see matching words from your Word library.</p></div>
+</div>
+</div>
+</div>
+<p class="error-message form-message" id="sentenceError"></p><p class="success-message form-message" id="sentenceSuccess"></p><div class="sentence-actions-bottom"><button class="secondary-button" data-i18n="common_clear" type="reset">Clear</button><button class="primary-button" data-i18n="as_saveSentence" type="submit">Save Sentence</button></div></form></section>
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/word-sentence-linking.js"></script>
+<script src="/static/js/add-sentence.js"></script>
+{% endblock %}

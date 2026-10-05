@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Quiz</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head">
+<div><p class="eyebrow" data-i18n="qz_eyebrow">PRACTICE MODE</p><h1 data-i18n="nav_quiz">Quiz</h1></div>
+
+</header>
+<div class="quiz-shell">
+<section class="panel">
+<div class="quiz-settings">
+<select class="select quiz-select" id="quizCount">
+<option data-i18n="qz_q5" value="5">5 Questions</option><option data-i18n="qz_q10" selected="" value="10">10 Questions</option><option data-i18n="qz_q20" value="20">20 Questions</option><option data-i18n="qz_q50" value="50">50 Questions</option>
+</select>
+<select class="select quiz-select" id="quizType">
+<option data-i18n="qz_mixed" value="mixed">Mixed Direction</option><option data-i18n="qz_wordToDef" value="word-definition">Word Arabic Meaning</option><option data-i18n="qz_defToWord" value="definition-word">Arabic Meaning Word</option>
+</select>
+<select class="select quiz-select" id="quizDifficulty">
+<option data-i18n="qz_allDiff" value="all">All Difficulties</option><option data-i18n="diff_easy" value="easy">Easy</option><option data-i18n="diff_medium" value="medium">Medium</option><option data-i18n="diff_hard" value="hard">Hard</option>
+</select>
+<button class="primary-button" data-i18n="common_startQuiz" id="startQuiz">Start Quiz</button>
+</div>
+</section>
+<div class="quiz-top"><span class="review-counter" id="quizCounter">0 / 0</span><span class="review-counter" data-i18n="qz_multipleChoice">Multiple Choice</span></div>
+<div class="quiz-progress"><div id="quizProgress"></div></div>
+<section class="panel quiz-card" id="quizCard">
+<div class="quiz-type" id="quizTypeLabel">WORD DEFINITION</div>
+<h2 class="quiz-question" id="quizQuestion">Question</h2>
+<div class="quiz-options" id="quizOptions"></div>
+<div class="quiz-feedback" id="quizFeedback"></div>
+<button class="primary-button quiz-next" data-i18n="common_nextQuestion" id="quizNext">Next Question</button>
+</section>
+<section class="panel quiz-summary" id="quizSummary">
+<p class="eyebrow" data-i18n="qz_complete">QUIZ COMPLETE</p>
+<div class="quiz-score" id="quizScore">0%</div>
+<p data-i18n="qz_niceWork">Nice work. Keep practicing to strengthen your recall.</p>
+<div class="quiz-summary-grid">
+<div class="quiz-stat"><strong id="quizCorrect">0</strong><span data-i18n="common_correct">Correct</span></div>
+<div class="quiz-stat"><strong id="quizWrong">0</strong><span data-i18n="common_incorrect">Incorrect</span></div>
+<div class="quiz-stat"><strong id="quizDuration">0s</strong><span data-i18n="common_duration">Duration</span></div>
+</div>
+<button class="primary-button" data-i18n="common_tryAgain" id="restartQuiz">Try Again</button>
+</section>
+<section class="panel quiz-empty" id="quizEmpty">
+<h2 data-i18n="qz_notEnoughWords">Not enough words yet</h2>
+<p data-i18n="qz_notEnoughWordsText">Add at least four vocabulary words before starting a multiple-choice quiz.</p>
+<a class="primary-button" data-i18n="common_addWordBtn" href="/add-word">Add word</a>
+</section>
+</div>
+
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/quiz.js"></script>
+{% endblock %}

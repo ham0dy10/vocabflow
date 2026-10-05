@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VocabFlow account access">
+  <title>VocabFlow | Sign in</title>
+  <script nonce="{{ csp_nonce }}">
+    (function(){try{var s=JSON.parse(localStorage.getItem('vocabflow_settings')||'{}');document.documentElement.dataset.theme=s.theme==='dark'?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}document.documentElement.lang='en';document.documentElement.dir='ltr';})();
+  </script>
+  <link rel="stylesheet" href="/static/css/vocabflow.css">
+</head>
+<body class="auth-body">
+  <header class="auth-topbar">
+    <a class="site-brand" href="/login" aria-label="VocabFlow">
+      <span class="site-brand-mark" aria-hidden="true">V</span>
+      <span class="site-brand-name">VocabFlow</span>
+    </a>
+    <div class="site-controls">
+      <button class="top-control" id="authLangToggle" type="button" aria-label="Change language"><span data-i18n="langToggle">العربية</span></button>
+      <button class="top-control icon-only" id="authThemeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+        <svg class="theme-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M5.6 5.6 7 7M17 17l1.4 1.4M3 12h2M19 12h2M5.6 18.4 7 17M17 7l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+        <span class="sr-only" id="authThemeLabel" data-i18n="darkMode">Dark mode</span>
+      </button>
+    </div>
+  </header>
+  <main class="auth-main">
+    <section class="auth-form-wrap" aria-labelledby="authTitle">
+      <div class="auth-heading">
+        <p class="page-kicker" data-i18n="auth_accessLabel">Account access</p>
+        <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+          <button type="button" class="auth-tab active" id="loginTab" data-i18n="auth_signIn">Sign in</button>
+          <button type="button" class="auth-tab" id="registerTab" data-i18n="auth_createAccount">Create account</button>
+        </div>
+      </div>
+      <h1 id="authTitle">Welcome back</h1>
+      <p id="authSubtitle" data-i18n="auth_signInSubtitle">Sign in to continue to your vocabulary workspace.</p>
+
+      <form id="authForm" class="auth-form" novalidate>
+        <div class="auth-field" id="fullNameField" hidden><label for="fullName" data-i18n="auth_fullName">Full name</label><input id="fullName" name="fullName" autocomplete="name" maxlength="80"></div>
+        <div class="auth-field" id="emailField" hidden><label for="email" data-i18n="auth_email">Email address</label><input id="email" name="email" type="email" autocomplete="email" maxlength="160"></div>
+        <div class="auth-field"><label for="username" id="usernameLabel" data-i18n="auth_usernameOrEmail">Username or email</label><input id="username" name="username" autocomplete="username" maxlength="160" required></div>
+        <div class="auth-field"><label for="password" data-i18n="auth_password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required><div class="auth-password-note" id="passwordNote" data-i18n="auth_passwordNote">Use at least 8 characters.</div></div>
+        <div class="auth-field" id="confirmPasswordField" hidden><label for="confirmPassword" data-i18n="auth_confirmPassword">Confirm password</label><input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" maxlength="128"></div>
+        <div class="auth-error" id="authError" role="alert" aria-live="polite"></div>
+        <button class="primary-button auth-submit" id="authSubmit" type="submit" data-i18n="auth_signIn">Sign in</button>
+      </form>
+      <p class="auth-privacy" data-i18n="auth_privacy">Your vocabulary and learning history stay in your VocabFlow account.</p>
+    </section>
+  </main>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/storage.js"></script>
+  <script src="/static/js/i18n.js"></script>
+  <script src="/static/js/auth.js"></script>
+  <script src="/static/js/vf-login.js"></script>
+</body>
+</html>

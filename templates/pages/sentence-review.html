@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Sentence review</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head"><div><p class="eyebrow" data-i18n="sp_eyebrow">SENTENCE PRACTICE</p><h1 data-i18n="nav_sentenceReview">Sentence review</h1></div><a class="secondary-button" href="/sentences"><span data-i18n="common_backSentences">Sentences</span></a></header>
+<div class="sentence-review-shell">
+<div class="sentence-review-top"><span class="sentence-review-counter" id="sentenceReviewCounter">0 / 0</span><span class="sentence-review-counter" data-i18n="sr_todayLabel">Today's Sentence review</span></div>
+<div class="sentence-session-progress"><div id="sentenceSessionProgress"></div></div>
+<section class="panel sentence-card" id="sentenceReviewCard">
+<div class="sentence-label" data-i18n="sr_englishSentence">ENGLISH SENTENCE</div><h2 class="sentence-text" id="sentenceCardText"></h2>
+<p class="sentence-hint" data-i18n="sr_hint" id="sentenceCardHint">Think about the Arabic meaning.</p>
+<button class="primary-button" data-i18n="common_showAnswer" id="sentenceShowAnswer">Show Answer</button>
+<div class="sentence-answer" hidden="" id="sentenceAnswer"><span class="sentence-answer-label" data-i18n="sr_arabicMeaning">Arabic Meaning</span><div class="sentence-answer-meaning" id="sentenceAnswerMeaning"></div></div>
+<div class="sentence-rating-grid" hidden="" id="sentenceRatingGrid">
+<button class="sentence-rate" data-rating="again"><span data-i18n="rate_again">Again</span><small data-i18n="sr_again_sub">1 · Review soon</small></button>
+<button class="sentence-rate" data-rating="hard"><span data-i18n="rate_hard">Hard</span><small data-i18n="rate_hard_sub">2 · Difficult</small></button>
+<button class="sentence-rate" data-rating="good"><span data-i18n="rate_good">Good</span><small data-i18n="rate_good_sub">3 · Normal</small></button>
+<button class="sentence-rate" data-rating="easy"><span data-i18n="rate_easy">Easy</span><small data-i18n="rate_easy_sub">4 · Long interval</small></button>
+</div></section>
+<section class="panel sentence-review-empty" hidden="" id="sentenceReviewEmpty"><h2 data-i18n="common_allCaughtUp">You’re all caught up</h2><p data-i18n="sr_emptyText">There are no sentence cards due right now.</p><a class="primary-button" data-i18n="common_addSentenceBtn" href="/add-sentence">Add sentence</a></section>
+<section class="panel sentence-summary" hidden="" id="sentenceReviewSummary"><h2 data-i18n="sr_complete">Sentence review Complete</h2>
+<div class="sentence-summary-grid">
+<div class="sentence-summary-stat"><strong id="sentenceSummaryReviewed">0</strong><span data-i18n="sr_reviewed">Reviewed</span></div>
+<div class="sentence-summary-stat"><strong id="sentenceSummaryAgain">0</strong><span data-i18n="rate_again">Again</span></div>
+<div class="sentence-summary-stat"><strong id="sentenceSummaryGood">0</strong><span data-i18n="rate_good">Good</span></div>
+<div class="sentence-summary-stat"><strong id="sentenceSummaryEasy">0</strong><span data-i18n="rate_easy">Easy</span></div>
+<div class="sentence-summary-stat"><strong id="sentenceSummaryAccuracy">0%</strong><span data-i18n="common_accuracy">Accuracy</span></div>
+</div>
+<button class="primary-button" data-i18n="rv_startAnother" id="sentenceReviewRestart">Start another review</button></section>
+<p class="sentence-shortcuts" data-i18n="rv_shortcuts">Keyboard: Space = Show Answer · 1 = Again · 2 = Hard · 3 = Good · 4 = Easy</p>
+</div>
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/sentence-review.js"></script>
+{% endblock %}

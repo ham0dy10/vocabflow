@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Practice mode</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head"><div><p class="eyebrow" data-i18n="pr_eyebrow">DAILY TRAINING</p><h1 data-i18n="nav_practice">Practice mode</h1></div></header>
+<div class="practice-shell">
+<section class="panel"><div class="practice-settings">
+<select class="select" id="practiceMode"><option data-i18n="pr_balanced" value="balanced">Balanced</option><option data-i18n="pr_wordsFocus" value="words">Words Focus</option><option data-i18n="pr_sentencesFocus" value="sentences">Sentences Focus</option></select>
+<select class="select" id="practiceWords"><option data-i18n="pr_5words" value="5">5 Words</option><option data-i18n="pr_10words" selected="" value="10">10 Words</option><option data-i18n="pr_15words" value="15">15 Words</option></select>
+<select class="select" id="practiceSentences"><option data-i18n="pr_5sentences" value="5">5 Sentences</option><option data-i18n="pr_10sentences" selected="" value="10">10 Sentences</option><option data-i18n="pr_15sentences" value="15">15 Sentences</option></select>
+<select class="select" id="practiceTotal"><option data-i18n="pr_10tasks" value="10">10 Tasks</option><option data-i18n="pr_15tasks" selected="" value="15">15 Tasks</option><option data-i18n="pr_20tasks" value="20">20 Tasks</option></select>
+<button class="primary-button" data-i18n="pr_startPractice" id="practiceStart">Start Practice</button>
+</div></section>
+<div class="practice-top"><span class="practice-counter" id="practiceCounter">0 / 0</span><span class="practice-counter" data-i18n="pr_wordsAndSentences">Words + Sentences</span></div>
+<div class="practice-progress"><div id="practiceProgress"></div></div>
+<section class="panel practice-card" id="practiceCard">
+<div class="practice-mode" id="practiceModeLabel">PRACTICE</div>
+<h2 class="practice-prompt" id="practicePrompt">Question</h2>
+<p class="practice-secondary" id="practiceSecondary"></p>
+<div id="practiceArea"></div>
+<div class="practice-answer" hidden="" id="practiceAnswer"><div class="practice-answer-label" data-i18n="pr_correctAnswer">Correct Answer</div><div class="practice-answer-value"></div></div>
+<div class="practice-feedback" id="practiceFeedback"></div>
+<button class="primary-button practice-next" data-i18n="pr_next" id="practiceNext">Next</button>
+<p class="practice-hint" data-i18n="pr_hint">Practice mode combines vocabulary recall, sentence meaning, fill-in-the-blank, and writing in one session.</p>
+</section>
+<section class="panel practice-summary" hidden="" id="practiceSummary">
+<div class="practice-score" id="practiceScore">0%</div><p data-i18n="pr_sessionComplete">Practice session complete.</p>
+<div class="practice-summary-grid">
+<div class="practice-stat"><strong id="practiceTotalDone">0</strong><span data-i18n="pr_tasks">Tasks</span></div>
+<div class="practice-stat"><strong id="practiceCorrect">0</strong><span data-i18n="common_correct">Correct</span></div>
+<div class="practice-stat"><strong id="practiceWordsDone">0</strong><span data-i18n="pr_wordTasks">Word Tasks</span></div>
+<div class="practice-stat"><strong id="practiceSentencesDone">0</strong><span data-i18n="pr_sentenceTasks">Sentence Tasks</span></div>
+</div>
+<button class="primary-button" data-i18n="pr_startAgain" id="practiceRestart">Start Again</button>
+</section>
+<section class="panel practice-empty" hidden="" id="practiceEmpty">
+<h2 data-i18n="pr_noData">No learning data yet</h2><p data-i18n="pr_noDataText">Add some vocabulary words or sentences to start Practice mode.</p>
+<a class="primary-button" data-i18n="common_addWordBtn" href="/add-word">Add word</a>
+<a class="secondary-button" data-i18n="common_addSentenceBtn" href="/add-sentence">Add sentence</a>
+</section>
+</div>
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/word-sentence-linking.js"></script>
+<script src="/static/js/practice.js"></script>
+{% endblock %}

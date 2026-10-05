@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Word library</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+
+<header class="page-head"><div><p class="eyebrow" data-i18n="wl_eyebrow">YOUR VOCABULARY</p><h1 data-i18n="nav_words">Word library</h1></div><a class="primary-button" data-i18n="common_addWordBtn" href="/add-word">Add word</a></header>
+<section class="panel library-panel">
+<div class="library-toolbar">
+<input class="field" data-i18n-placeholder="wl_searchPlaceholder" id="searchInput" placeholder="Search words or definitions..."/>
+<select class="select" id="categoryFilter"><option data-i18n="wl_allCategories" value="all">All categories</option></select>
+<select class="select" id="difficultyFilter"><option data-i18n="wl_allDifficulties" value="all">All difficulties</option><option data-i18n="diff_easy" value="easy">Easy</option><option data-i18n="diff_medium" value="medium">Medium</option><option data-i18n="diff_hard" value="hard">Hard</option></select>
+<select class="select" id="statusFilter"><option data-i18n="wl_allStatuses" value="all">All statuses</option><option data-i18n="status_new" value="new">New</option><option data-i18n="status_learning" value="learning">Learning</option><option data-i18n="status_reviewing" value="reviewing">Reviewing</option><option data-i18n="status_mastered" value="mastered">Mastered</option></select>
+</div>
+<div class="library-list-toolbar"><h3 id="libraryCount">0 words</h3><div class="library-sort"><span data-i18n="wl_sortBy">Sort by</span><select class="select" id="sortSelect"><option data-i18n="sort_alpha" value="alphabetical">Alphabetical</option><option data-i18n="sort_date" value="date">Date added</option><option data-i18n="sort_nextReview" value="review">Next review</option></select></div></div>
+<div class="library-list-head" aria-hidden="true"><span data-i18n="wl_wordColumn">Word</span><span data-i18n="wl_meaningColumn">Meaning</span><span data-i18n="wl_statusColumn">Status</span><span data-i18n="wl_actionsColumn">Actions</span></div>
+<div class="word-list" id="wordList"></div>
+</section>
+<section class="panel link-section" hidden="" id="wordLinkedSentencePanel">
+<div class="panel-heading">
+<div>
+<p class="eyebrow" data-i18n="wl_context">CONTEXT</p>
+<h3 data-i18n="wl_sentencesUsingWord">Sentences using this word</h3>
+</div>
+<div>
+<span class="link-count" id="linkedSentenceCount">0 sentences</span>
+<a class="secondary-button" data-i18n="wl_openFullPage" href="/word-context" id="wordContextFullLink">Open full page</a>
+</div>
+</div>
+<div class="linked-sentence-list" id="linkedSentences"></div>
+</section>
+
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/word-sentence-linking.js"></script>
+<script src="/static/js/words.js"></script>
+{% endblock %}

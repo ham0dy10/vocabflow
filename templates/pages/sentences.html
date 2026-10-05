@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Sentences</title>{% endblock %}
+{% block page_styles %}{% endblock %}
+{% block content %}
+<header class="page-head"><div><p class="eyebrow" data-i18n="sl_eyebrow">CONTEXT PRACTICE</p><h1 data-i18n="nav_sentences">Sentences</h1></div><div class="page-head-actions"><a class="secondary-button" data-i18n="sl_startReview" href="/sentence-review">Start Review</a><a class="primary-button" data-i18n="common_addSentenceBtn" href="/add-sentence">Add sentence</a><a class="secondary-button" data-i18n="sl_importExport" href="/data">Sentence import &amp; export</a></div>
+</header><section class="panel library-panel"><div class="sentence-toolbar"><input class="field" data-i18n-placeholder="sl_searchPlaceholder" id="sentenceSearch" placeholder="Search sentences or Arabic meanings..."/><select class="select" id="sentenceCategory"><option data-i18n="wl_allCategories" value="all">All categories</option></select><select class="select" id="sentenceDifficulty"><option data-i18n="wl_allDifficulties" value="all">All difficulties</option><option data-i18n="diff_easy" value="easy">Easy</option><option data-i18n="diff_medium" value="medium">Medium</option><option data-i18n="diff_hard" value="hard">Hard</option></select><select class="select" id="sentenceStatus"><option data-i18n="wl_allStatuses" value="all">All statuses</option><option data-i18n="status_new" value="new">New</option><option data-i18n="status_learning" value="learning">Learning</option><option data-i18n="status_reviewing" value="reviewing">Reviewing</option><option data-i18n="status_mastered" value="mastered">Mastered</option></select></div><div class="library-list-toolbar"><h3 id="sentenceCount">0 sentences</h3><div class="library-sort"><span data-i18n="wl_sortBy">Sort by</span><select class="select" id="sentenceSort"><option data-i18n="sort_alpha" value="alphabetical">Alphabetical</option><option data-i18n="sort_date" value="date">Date added</option><option data-i18n="sort_nextReview" value="review">Next review</option></select></div></div><div class="library-list-head sentence-list-head" aria-hidden="true"><span data-i18n="sl_sentenceColumn">Sentence</span><span data-i18n="wl_meaningColumn">Meaning</span><span data-i18n="wl_statusColumn">Status</span><span data-i18n="sl_nextReview">Next review</span><span data-i18n="wl_actionsColumn">Actions</span></div><div class="sentence-list" id="sentenceList"></div></section>
+{% endblock %}
+{% block page_scripts %}
+<script src="/static/js/sentences.js"></script>
+<script src="/static/js/word-sentence-linking.js"></script>
+<script src="/static/js/sentence-library.js"></script>
+<script src="/static/js/sentence-import-export.js"></script>
+{% endblock %}

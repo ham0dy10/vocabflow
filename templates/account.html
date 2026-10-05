@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}<title>VocabFlow | Account</title>{% endblock %}
+{% block content %}
+<header class="page-head">
+  <div>
+    <p class="page-kicker" data-i18n="account_kicker">Account</p>
+    <h1 data-i18n="account_title">Account</h1>
+  </div>
+</header>
+
+<div class="account-page" dir="ltr">
+  <section class="panel account-profile-panel" dir="ltr" aria-labelledby="accountProfileTitle">
+    <div class="account-hero">
+      <div class="account-identity">
+        <div class="account-avatar" id="accountAvatar" aria-hidden="true">V</div>
+        <div>
+          <h2 id="accountName">VocabFlow user</h2>
+          <p id="accountUsername">@username</p>
+        </div>
+      </div>
+      <div class="account-summary" aria-label="Account activity">
+        <div class="account-summary-item"><strong id="accountWordsCount">0</strong><span data-i18n="account_words">Words</span></div>
+        <div class="account-summary-item"><strong id="accountSentencesCount">0</strong><span data-i18n="account_sentences">Sentences</span></div>
+      </div>
+    </div>
+
+    <h2 id="accountProfileTitle" class="account-section-title" data-i18n="account_profile">Profile</h2>
+    <p class="account-section-note" data-i18n="account_profileNote">Keep your profile details up to date.</p>
+
+    <form id="profileForm" class="form-stack" novalidate>
+      <div class="account-fields-grid">
+        <div class="form-group">
+          <label for="accountFullName" data-i18n="auth_fullName">Full name</label>
+          <input class="field" id="accountFullName" maxlength="80" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="accountEmail" data-i18n="auth_email">Email address</label>
+          <input class="field" id="accountEmail" type="email" maxlength="160" autocomplete="email">
+          <small class="auth-password-note" data-i18n="account_emailNote">Changing your email requires your current password.</small>
+        </div>
+        <div class="form-group full" id="accountCurrentPasswordWrap" hidden>
+          <label for="accountCurrentPassword" data-i18n="account_currentPassword">Current password</label>
+          <input class="field" id="accountCurrentPassword" type="password" maxlength="128" autocomplete="current-password">
+        </div>
+        <div class="form-group full">
+          <label for="accountUsernameField" data-i18n="auth_username">Username</label>
+          <input class="field" id="accountUsernameField" readonly aria-readonly="true">
+          <small class="auth-password-note" data-i18n="account_usernameNote">Your username identifies this account and cannot be changed here.</small>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="primary-button" type="submit" data-i18n="common_saveChanges">Save changes</button>
+        <span class="form-status" id="profileStatus" aria-live="polite"></span>
+      </div>
+    </form>
+    <div class="account-subsection" aria-labelledby="changePasswordTitle">
+      <h2 id="changePasswordTitle" class="account-section-title" data-i18n="account_changePassword">Change password</h2>
+      <p class="account-section-note" data-i18n="account_changePasswordNote">Use a new password that is not shared with other accounts.</p>
+      <form id="passwordForm" class="form-stack" novalidate>
+        <div class="account-fields-grid">
+          <div class="form-group full">
+            <label for="currentPassword" data-i18n="account_currentPassword">Current password</label>
+            <input class="field" id="currentPassword" type="password" maxlength="128" autocomplete="current-password" required>
+          </div>
+          <div class="form-group">
+            <label for="newPassword" data-i18n="account_newPassword">New password</label>
+            <input class="field" id="newPassword" type="password" maxlength="128" autocomplete="new-password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmNewPassword" data-i18n="account_confirmNewPassword">Confirm new password</label>
+            <input class="field" id="confirmNewPassword" type="password" maxlength="128" autocomplete="new-password" required>
+          </div>
+        </div>
+        <small class="auth-password-note" data-i18n="auth_passwordNote">Use 8 to 128 characters and avoid common passwords.</small>
+        <div class="form-actions">
+          <button class="primary-button" type="submit" data-i18n="account_updatePassword">Update password</button>
+          <span class="form-status" id="passwordStatus" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <aside class="panel account-preferences-panel" dir="ltr" aria-labelledby="preferencesTitle">
+    <p class="page-kicker" data-i18n="account_preferences">Preferences</p>
+    <h2 id="preferencesTitle" class="account-section-title" data-i18n="account_settings">Settings</h2>
+    <div class="preference-list">
+      <div class="preference-row">
+        <div>
+          <strong data-i18n="account_language">Language</strong>
+          <span data-i18n="account_languageNote">Change interface text without changing the layout direction.</span>
+        </div>
+        <button class="secondary-button" id="accountLang" type="button" data-i18n="langToggle">العربية</button>
+      </div>
+      <div class="preference-row">
+        <div>
+          <strong data-i18n="account_appearance">Appearance</strong>
+          <span data-i18n="account_appearanceNote">Choose the light or dark theme.</span>
+        </div>
+        <button class="secondary-button" id="accountTheme" type="button" data-i18n="darkMode">Dark mode</button>
+      </div>
+    </div>
+
+    <div class="account-danger">
+      <p class="page-kicker" data-i18n="account_dangerKicker">Account removal</p>
+      <strong data-i18n="account_deleteTitle">Delete account</strong>
+      <span data-i18n="account_deleteNote">This permanently deletes your profile, vocabulary, reviews, and study history.</span>
+      <button class="secondary-button danger-button" id="deleteAccountButton" type="button" data-i18n="account_deleteButton">Delete account</button>
+    </div>
+
+    <div class="account-session">
+      <p class="page-kicker" data-i18n="account_session">Session</p>
+      <span data-i18n="account_sessionNote">Sign out from this device.</span>
+      <button class="secondary-button" id="accountLogout" type="button" data-i18n="auth_logout">Log out</button>
+    </div>
+  </aside>
+</div>
+
+<dialog class="account-delete-dialog" id="deleteAccountDialog" aria-labelledby="deleteAccountTitle">
+  <div class="account-delete-dialog-inner">
+    <h2 id="deleteAccountTitle" data-i18n="account_deleteDialogTitle">Delete your account?</h2>
+    <p data-i18n="account_deleteDialogText">This removes your account and all learning data. This action cannot be undone.</p>
+    <label class="delete-password-field" for="deleteAccountPassword" data-i18n="account_currentPassword">Current password</label>
+    <input class="field" id="deleteAccountPassword" type="password" maxlength="128" autocomplete="current-password">
+    <div class="dialog-actions">
+      <button class="secondary-button" id="deleteAccountCancel" type="button" data-i18n="common_cancel">Cancel</button>
+      <button class="primary-button danger-filled" id="deleteAccountConfirm" type="button" data-i18n="account_deleteConfirm">Delete permanently</button>
+    </div>
+  </div>
+</dialog>
+{% endblock %}
+{% block page_scripts %}<script src="/static/js/vf-account.js"></script>{% endblock %}
