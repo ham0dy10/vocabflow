@@ -46,9 +46,7 @@ See [SECURITY.md](SECURITY.md) for production requirements.
 | Rate limiting | Redis (required in production) |
 | Testing | pytest |
 
-<!--
-SCREENSHOTS: after uploading your images to docs/screenshots/, delete this
-comment marker (the "<!--" line and the "-->" line) so the section below shows.
+
 
 ## Screenshots
 
@@ -59,7 +57,7 @@ comment marker (the "<!--" line and the "-->" line) so the section below shows.
 | Quiz | Dark mode / Arabic |
 | --- | --- |
 | ![Quiz](docs/screenshots/quiz.png) | ![Dark mode](docs/screenshots/dark-arabic.png) |
--->
+
 
 ## Getting started
 
